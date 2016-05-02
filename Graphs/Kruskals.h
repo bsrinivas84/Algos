@@ -1,4 +1,5 @@
 // a structure to represent a weighted edge in graph
+//Test
 struct KruskalsEdge
 {
 	int src, dest, weight;
