@@ -29,18 +29,20 @@ void KruskalMST(struct KruskalsGraph* graph);
 int main()
 {
 	//Dkstra
-	/*int graph[V][V] = { { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
-	{ 4, 0, 8, 0, 0, 0, 0, 11, 0 },
-	{ 0, 8, 0, 7, 0, 4, 0, 0, 2 },
-	{ 0, 0, 7, 0, 9, 14, 0, 0, 0 },
-	{ 0, 0, 0, 9, 0, 10, 0, 0, 0 },
-	{ 0, 0, 4, 0, 10, 0, 2, 0, 0 },
-	{ 0, 0, 0, 14, 0, 2, 0, 1, 6 },
-	{ 8, 11, 0, 0, 0, 0, 1, 0, 7 },
-	{ 0, 0, 2, 0, 0, 0, 6, 7, 0 }
+	int graph[9][9] = { 
+						//0, 1, 2, 3, 4, 5, 6, 7, 8	
+				/*0*/   { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
+				/*1*/   { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
+		        /*2*/	{ 0, 8, 0, 7, 0, 4, 0, 0, 2 },
+				/*3*/   { 0, 0, 7, 0, 9, 14, 0, 0, 0 },
+				/*4*/	{ 0, 0, 0, 9, 0, 10, 0, 0, 0 },
+				/*5*/   { 0, 0, 4, 0, 10, 0, 2, 0, 0 },
+				/*6*/   { 0, 0, 0, 14, 0, 2, 0, 1, 6 },
+				/*7*/   { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
+				/*8*/   { 0, 0, 2, 0, 0, 0, 6, 7, 0 }
 	};
 
-	dijkstra(graph, 0);*/
+	dijkstra(graph, 0);
 
 	//Dkstra Priority Queue
 
@@ -147,45 +149,47 @@ int main()
 	//primMST(graph);
 
 //Kruskals
-/* Let us create following weighted graph
-10
-0--------1
-|  \     |
-6|   5\   |15
-|      \ |
-2--------3
-4       */
-int V = 4;  // Number of vertices in graph
-int E = 5;  // Number of edges in graph
-struct KruskalsGraph* graph = createGraphKruskals(V, E);
 
+	/* Let us create following weighted graph
+	10
+	0--------1
+	|  \     |
+	6|   5\   |15
+	|      \ |
+	2--------3
+	4       */
 
-// add edge 0-1
-graph->edge[0].src = 0;
-graph->edge[0].dest = 1;
-graph->edge[0].weight = 10;
-
-// add edge 0-2
-graph->edge[1].src = 0;
-graph->edge[1].dest = 2;
-graph->edge[1].weight = 6;
-
-// add edge 0-3
-graph->edge[2].src = 0;
-graph->edge[2].dest = 3;
-graph->edge[2].weight = 5;
-
-// add edge 1-3
-graph->edge[3].src = 1;
-graph->edge[3].dest = 3;
-graph->edge[3].weight = 15;
-
-// add edge 2-3
-graph->edge[4].src = 2;
-graph->edge[4].dest = 3;
-graph->edge[4].weight = 4;
-
-KruskalMST(graph);
+	//int V = 4;  // Number of vertices in graph
+	//int E = 5;  // Number of edges in graph
+	//struct KruskalsGraph* graph = createGraphKruskals(V, E);
+	//
+	//
+	//// add edge 0-1
+	//graph->edge[0].src = 0;
+	//graph->edge[0].dest = 1;
+	//graph->edge[0].weight = 10;
+	//
+	//// add edge 0-2
+	//graph->edge[1].src = 0;
+	//graph->edge[1].dest = 2;
+	//graph->edge[1].weight = 6;
+	//
+	//// add edge 0-3
+	//graph->edge[2].src = 0;
+	//graph->edge[2].dest = 3;
+	//graph->edge[2].weight = 5;
+	//
+	//// add edge 1-3
+	//graph->edge[3].src = 1;
+	//graph->edge[3].dest = 3;
+	//graph->edge[3].weight = 15;
+	//
+	//// add edge 2-3
+	//graph->edge[4].src = 2;
+	//graph->edge[4].dest = 3;
+	//graph->edge[4].weight = 4;
+	//
+	//KruskalMST(graph);
 
 
 	getchar();
