@@ -7,6 +7,7 @@
 
 
 // Creates a graph with V vertices and E edges
+//Test
 struct KruskalsGraph* createGraphKruskals(int V, int E)
 {
 	struct KruskalsGraph* graph = (struct KruskalsGraph*) malloc(sizeof(struct KruskalsGraph));
