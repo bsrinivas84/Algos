@@ -128,12 +128,10 @@ void minHeapify(struct MinHeap* minHeap, int idx)
 	left = 2 * idx + 1;
 	right = 2 * idx + 2;
 
-	if (left < minHeap->size &&
-		minHeap->array[left]->dist < minHeap->array[smallest]->dist)
+	if (left < minHeap->size && minHeap->array[left]->dist < minHeap->array[smallest]->dist)
 		smallest = left;
 
-	if (right < minHeap->size &&
-		minHeap->array[right]->dist < minHeap->array[smallest]->dist)
+	if (right < minHeap->size && minHeap->array[right]->dist < minHeap->array[smallest]->dist)
 		smallest = right;
 
 	if (smallest != idx)
@@ -153,7 +151,7 @@ void minHeapify(struct MinHeap* minHeap, int idx)
 	}
 }
 
-// A utility function to check if the given minHeap is ampty or not
+// A utility function to check if the given minHeap is empty or not
 int isEmpty(struct MinHeap* minHeap)
 {
 	return minHeap->size == 0;
@@ -183,7 +181,7 @@ struct MinHeapNode* extractMin(struct MinHeap* minHeap)
 	return root;
 }
 
-// Function to decreasy dist value of a given vertex v. This function
+// Function to decrease dist value of a given vertex v. This function
 // uses pos[] of min heap to get the current index of node in min heap
 void decreaseKey(struct MinHeap* minHeap, int v, int dist)
 {
@@ -193,7 +191,7 @@ void decreaseKey(struct MinHeap* minHeap, int v, int dist)
 	// Get the node and update its dist value
 	minHeap->array[i]->dist = dist;
 
-	// Travel up while the complete tree is not hepified.
+	// Travel up while the complete tree is not heapified.
 	// This is a O(Logn) loop
 	while (i && minHeap->array[i]->dist < minHeap->array[(i - 1) / 2]->dist)
 	{
@@ -260,8 +258,8 @@ void dijkstra(struct Graph* graph, int src)
 		struct MinHeapNode* minHeapNode = extractMin(minHeap);
 		int u = minHeapNode->v; // Store the extracted vertex number
 
-								// Traverse through all adjacent vertices of u (the extracted
-								// vertex) and update their distance values
+		// Traverse through all adjacent vertices of u (the extracted
+		// vertex) and update their distance values
 		struct AdjListNode* pCrawl = graph->array[u].head;
 		while (pCrawl != NULL)
 		{
@@ -269,8 +267,7 @@ void dijkstra(struct Graph* graph, int src)
 
 			// If shortest distance to v is not finalized yet, and distance to v
 			// through u is less than its previously calculated distance
-			if (isInMinHeap(minHeap, v) && dist[u] != INT_MAX &&
-				pCrawl->weight + dist[u] < dist[v])
+			if (isInMinHeap(minHeap, v) && dist[u] != INT_MAX && pCrawl->weight + dist[u] < dist[v])
 			{
 				dist[v] = dist[u] + pCrawl->weight;
 
