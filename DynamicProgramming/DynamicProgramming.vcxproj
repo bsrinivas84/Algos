@@ -150,6 +150,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DynamicProgramming.cpp" />
+    <ClCompile Include="LCSDP.cpp" />
+    <ClCompile Include="LCSLength.cpp" />
+    <ClCompile Include="LCSLengthDP.cpp" />
+    <ClCompile Include="LIS.cpp" />
+    <ClCompile Include="MaxSubSquareMatrix.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

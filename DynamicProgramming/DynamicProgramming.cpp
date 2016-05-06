@@ -7,8 +7,14 @@
 #include<cstdlib>
 using namespace std;
 
+int lcslengthNonDP(char *X, char *Y, int m, int n);
+int lcslengthDP(char *X, char *Y, int m, int n);
+void LCSDP(char* X, int m, char *Y, int n);
+
 //Knapsack Problem
 int max(int a, int b) { return (a > b) ? a : b; }
+
+int lis(int arr[], int n);
 
 // Returns the maximum value that can be put in a knapsack of capacity W
 int knapSack(int W, int wt[], int val[], int n)
@@ -288,8 +294,24 @@ int main()
 	int n = strlen(Y);
 	lcs(X, Y, m, n);*/
 
-	int numbers[] = {1,-3,4,-2,-1,6};//{ -2,11,-4,13,-5,2 };
-	printf("%d", mcs(numbers,sizeof(numbers)/sizeof(int)));
+	//int numbers[] = {1,-3,4,-2,-1,6};//{ -2,11,-4,13,-5,2 };
+	//printf("%d", mcs(numbers,sizeof(numbers)/sizeof(int)));
+
+	//char X[] = "AGGTAB";
+	//char Y[] = "GXTXAYB";
+
+	//int m = strlen(X);
+	//int n = strlen(Y);
+
+	////printf("Length of LCS is %d\n", lcslengthNonDP(X, Y, m, n));
+	////printf("Length of LCS is %d\n", lcslengthDP(X, Y, m, n));
+	//LCSDP(X,m,Y, n);
+
+
+//LIS
+	int arr[] = { 10, 22, 9, 33, 21, 50, 41, 60 };
+	int n = sizeof(arr) / sizeof(arr[0]);
+	printf("Length of LIS is %d\n", lis(arr, n));
 
 	getchar();
 	return 0;
