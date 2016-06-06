@@ -30,6 +30,9 @@
     <ClInclude Include="Kruskals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -54,6 +57,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Kruskals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BFS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DFS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TopologicalSort.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Prims-Heap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

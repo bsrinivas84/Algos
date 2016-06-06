@@ -1,9 +1,12 @@
-// Graphs.cpp : Defines the entry point for the console application.
+/// Graphs.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
 #include "BellmanFord.h"
 #include "Kruskals.h"
+using namespace std;
+#include "Common.h"
+//#include "BFS.cpp"
 //#define V 9
 
 int minDistance(int dist[], bool sptSet[]);
@@ -12,7 +15,7 @@ void dijkstra(int graph[9][9], int src);
 
 struct Graph* createGraph(int V);
 void addEdge(struct Graph* graph, int src, int dest, int weight);
-void dijkstra(struct Graph* graph, int src);
+void dijkstraPQ(struct Graph* graph, int src);
 
 void printGraph(struct Graph* graph);
 struct Graph* createGraphAdjacency(int V);
@@ -25,6 +28,11 @@ void primMST(int graph[5][5]);
 
 struct KruskalsGraph* createGraphKruskals(int V, int E);
 void KruskalMST(struct KruskalsGraph* graph);
+
+//Pims Heap
+void addEdgePrimsHeap(struct PrimsHeapGraph* PrimsHeapGraph, int src, int dest, int weight);
+struct PrimsHeapGraph* createPrimsHeapGraph(int V);
+void PrimMST(struct PrimsHeapGraph* PrimsHeapGraph);
 
 int main()
 {
@@ -46,25 +54,25 @@ int main()
 
 	//Dkstra Priority Queue
 
-	// create the graph given in above fugure
-	int V = 9;
-	struct Graph* graph = createGraph(V);
-	addEdge(graph, 0, 1, 4);
-	addEdge(graph, 0, 7, 8);
-	addEdge(graph, 1, 2, 8);
-	addEdge(graph, 1, 7, 11);
-	addEdge(graph, 2, 3, 7);
-	addEdge(graph, 2, 8, 2);
-	addEdge(graph, 2, 5, 4);
-	addEdge(graph, 3, 4, 9);
-	addEdge(graph, 3, 5, 14);
-	addEdge(graph, 4, 5, 10);
-	addEdge(graph, 5, 6, 2);
-	addEdge(graph, 6, 7, 1);
-	addEdge(graph, 6, 8, 6);
-	addEdge(graph, 7, 8, 7);
+	//// create the graph given in above fugure
+	//int V = 9;
+	//struct Graph* graph = createGraph(V);
+	//addEdge(graph, 0, 1, 4);
+	//addEdge(graph, 0, 7, 8);
+	//addEdge(graph, 1, 2, 8);
+	//addEdge(graph, 1, 7, 11);
+	//addEdge(graph, 2, 3, 7);
+	//addEdge(graph, 2, 8, 2);
+	//addEdge(graph, 2, 5, 4);
+	//addEdge(graph, 3, 4, 9);
+	//addEdge(graph, 3, 5, 14);
+	//addEdge(graph, 4, 5, 10);
+	//addEdge(graph, 5, 6, 2);
+	//addEdge(graph, 6, 7, 1);
+	//addEdge(graph, 6, 8, 6);
+	//addEdge(graph, 7, 8, 7);
 
-	dijkstra(graph, 0);
+	//dijkstraPQ(graph, 0);
 
 
 //Adjcency List
@@ -83,51 +91,51 @@ int main()
 
 //BellManFord
 	/* Let us create the graph given in above example */
-	//int V = 5;  // Number of vertices in graph
+	//int V1 = 5;  // Number of vertices in graph
 	//int E = 8;  // Number of edges in graph
-	//struct GraphBellmanFord* graph = createGraphBellmanFord(V, E);
+	//struct GraphBellmanFord* bellManFordgraph = createGraphBellmanFord(V1, E);
 	//
 	//// add edge 0-1 (or A-B in above figure)
-	//graph->edge[0].src = 0;
-	//graph->edge[0].dest = 1;
-	//graph->edge[0].weight = -1;
+	//bellManFordgraph->edge[0].src = 0;
+	//bellManFordgraph->edge[0].dest = 1;
+	//bellManFordgraph->edge[0].weight = -1;
 
 	//// add edge 0-2 (or A-C in above figure)
-	//graph->edge[1].src = 0;
-	//graph->edge[1].dest = 2;
-	//graph->edge[1].weight = 4;
+	//bellManFordgraph->edge[1].src = 0;
+	//bellManFordgraph->edge[1].dest = 2;
+	//bellManFordgraph->edge[1].weight = 4;
 
 	//// add edge 1-2 (or B-C in above figure)
-	//graph->edge[2].src = 1;
-	//graph->edge[2].dest = 2;
-	//graph->edge[2].weight = 3;
+	//bellManFordgraph->edge[2].src = 1;
+	//bellManFordgraph->edge[2].dest = 2;
+	//bellManFordgraph->edge[2].weight = 3;
 
 	//// add edge 1-3 (or B-D in above figure)
-	//graph->edge[3].src = 1;
-	//graph->edge[3].dest = 3;
-	//graph->edge[3].weight = 2;
+	//bellManFordgraph->edge[3].src = 1;
+	//bellManFordgraph->edge[3].dest = 3;
+	//bellManFordgraph->edge[3].weight = 2;
 
 	//// add edge 1-4 (or A-E in above figure)
-	//graph->edge[4].src = 1;
-	//graph->edge[4].dest = 4;
-	//graph->edge[4].weight = 2;
+	//bellManFordgraph->edge[4].src = 1;
+	//bellManFordgraph->edge[4].dest = 4;
+	//bellManFordgraph->edge[4].weight = 2;
 
 	//// add edge 3-2 (or D-C in above figure)
-	//graph->edge[5].src = 3;
-	//graph->edge[5].dest = 2;
-	//graph->edge[5].weight = 5;
+	//bellManFordgraph->edge[5].src = 3;
+	//bellManFordgraph->edge[5].dest = 2;
+	//bellManFordgraph->edge[5].weight = 5;
 
 	//// add edge 3-1 (or D-B in above figure)
-	//graph->edge[6].src = 3;
-	//graph->edge[6].dest = 1;
-	//graph->edge[6].weight = 1;
+	//bellManFordgraph->edge[6].src = 3;
+	//bellManFordgraph->edge[6].dest = 1;
+	//bellManFordgraph->edge[6].weight = 1;
 
 	//// add edge 4-3 (or E-D in above figure)
-	//graph->edge[7].src = 4;
-	//graph->edge[7].dest = 3;
-	//graph->edge[7].weight = -3;
+	//bellManFordgraph->edge[7].src = 4;
+	//bellManFordgraph->edge[7].dest = 3;
+	//bellManFordgraph->edge[7].weight = -3;
 
-	//BellmanFord(graph, 0);
+	//BellmanFord(bellManFordgraph, 0);
 
 //Prims
 	/* Let us create the following graph
@@ -192,6 +200,77 @@ int main()
 	//KruskalMST(graph);
 
 
+//BFS
+
+//0----1
+//|   /
+//|  /
+//| /
+//2------3
+
+//BFSGraph g(4);
+//g.addEdge(0, 1);
+//g.addEdge(0, 2);
+//g.addEdge(1, 2);
+//g.addEdge(2, 0);
+//g.addEdge(2, 3);
+//g.addEdge(3, 3);
+//
+//cout << "Following is Breadth First Traversal (starting from vertex 2) \n";
+//g.BFS(2);
+//
+//
+//// Create a graph given in the above diagram
+//DFSGraph g1(4);
+//g1.addEdge(0, 1);
+//g1.addEdge(0, 2);
+//g1.addEdge(1, 2);
+//g1.addEdge(2, 0);
+//g1.addEdge(2, 3);
+//g1.addEdge(3, 3);
+//
+//cout << "\n\nFollowing is Depth First Traversal (starting from vertex 2) \n";
+//g1.DFS(2);
+//
+//
+////Toplogical Sort
+//// Create a graph given in the above diagram
+//TopologicalGraph g2(4);
+////g2.addEdge(5, 2);
+////g2.addEdge(5, 0);
+////g2.addEdge(4, 0);
+////g2.addEdge(4, 1);
+////g2.addEdge(2, 3);
+////g2.addEdge(3, 1);
+//g2.addEdge(0, 1);
+//g2.addEdge(0, 2);
+//g2.addEdge(1, 2);
+//g2.addEdge(2, 0);
+//g2.addEdge(2, 3);
+//g2.addEdge(3, 3);
+//
+//cout << "\n\nFollowing is a Topological Sort of the given graph \n";
+//g2.topologicalSort();
+
+// Let us create the graph given in above fugure
+int V = 9;
+struct PrimsHeapGraph* PrimsHeapgraph = createPrimsHeapGraph(V);
+addEdgePrimsHeap(PrimsHeapgraph, 0, 1, 4);
+addEdgePrimsHeap(PrimsHeapgraph, 0, 7, 8);
+addEdgePrimsHeap(PrimsHeapgraph, 1, 2, 8);
+addEdgePrimsHeap(PrimsHeapgraph, 1, 7, 11);
+addEdgePrimsHeap(PrimsHeapgraph, 2, 3, 7);
+addEdgePrimsHeap(PrimsHeapgraph, 2, 8, 2);
+addEdgePrimsHeap(PrimsHeapgraph, 2, 5, 4);
+addEdgePrimsHeap(PrimsHeapgraph, 3, 4, 9);
+addEdgePrimsHeap(PrimsHeapgraph, 3, 5, 14);
+addEdgePrimsHeap(PrimsHeapgraph, 4, 5, 10);
+addEdgePrimsHeap(PrimsHeapgraph, 5, 6, 2);
+addEdgePrimsHeap(PrimsHeapgraph, 6, 7, 1);
+addEdgePrimsHeap(PrimsHeapgraph, 6, 8, 6);
+addEdgePrimsHeap(PrimsHeapgraph, 7, 8, 7);
+
+PrimMST(PrimsHeapgraph);
 	getchar();
 	return 0;
 }

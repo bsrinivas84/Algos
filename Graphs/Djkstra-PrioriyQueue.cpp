@@ -225,7 +225,7 @@ void printArr(int dist[], int n)
 
 // The main function that calulates distances of shortest paths from src to all
 // vertices. It is a O(ELogV) function
-void dijkstra(struct Graph* graph, int src)
+void dijkstraPQ(struct Graph* graph, int src)
 {
 	int V = graph->V;// Get the number of vertices in graph
 	int dist[9];      // dist values used to pick minimum weight edge in cut
