@@ -171,6 +171,10 @@
     <ClCompile Include="TopologicalSort.cpp" />
     <ClCompile Include="UnionFind-Cycle.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="git.ignore" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
