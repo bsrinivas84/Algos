@@ -259,8 +259,7 @@ void PrimMST(struct PrimsHeapGraph* PrimsHeapGraph)
 		struct MinHeapNode* minHeapNode = PrimsHeapextractMin(minHeap);
 		int u = minHeapNode->v; // Store the extracted vertex number
 
-								// Traverse through all adjacent vertices of u (the extracted
-								// vertex) and update their key values
+		// Traverse through all adjacent vertices of u (the extracted vertex) and update their key values
 		struct PrimsHeapAdjListNode* pCrawl = PrimsHeapGraph->array[u].head;
 		while (pCrawl != NULL)
 		{
@@ -279,6 +278,6 @@ void PrimMST(struct PrimsHeapGraph* PrimsHeapGraph)
 		}
 	}
 
-	/// print edges of MST
+	//// print edges of MST
 	PrimsHeapprintArr(parent, V);
 }

@@ -29,10 +29,14 @@ void primMST(int graph[5][5]);
 struct KruskalsGraph* createGraphKruskals(int V, int E);
 void KruskalMST(struct KruskalsGraph* graph);
 
-//Pims Heap
+//Prims Heap
 void addEdgePrimsHeap(struct PrimsHeapGraph* PrimsHeapGraph, int src, int dest, int weight);
 struct PrimsHeapGraph* createPrimsHeapGraph(int V);
 void PrimMST(struct PrimsHeapGraph* PrimsHeapGraph);
+
+//Union Find
+struct UnionFindGraph* createUnionFindGraph(int V, int E);
+int UnionFindisCycle(struct UnionFindGraph* UnionFindGraph);
 
 int main()
 {
@@ -253,24 +257,46 @@ int main()
 //g2.topologicalSort();
 
 // Let us create the graph given in above fugure
-int V = 9;
-struct PrimsHeapGraph* PrimsHeapgraph = createPrimsHeapGraph(V);
-addEdgePrimsHeap(PrimsHeapgraph, 0, 1, 4);
-addEdgePrimsHeap(PrimsHeapgraph, 0, 7, 8);
-addEdgePrimsHeap(PrimsHeapgraph, 1, 2, 8);
-addEdgePrimsHeap(PrimsHeapgraph, 1, 7, 11);
-addEdgePrimsHeap(PrimsHeapgraph, 2, 3, 7);
-addEdgePrimsHeap(PrimsHeapgraph, 2, 8, 2);
-addEdgePrimsHeap(PrimsHeapgraph, 2, 5, 4);
-addEdgePrimsHeap(PrimsHeapgraph, 3, 4, 9);
-addEdgePrimsHeap(PrimsHeapgraph, 3, 5, 14);
-addEdgePrimsHeap(PrimsHeapgraph, 4, 5, 10);
-addEdgePrimsHeap(PrimsHeapgraph, 5, 6, 2);
-addEdgePrimsHeap(PrimsHeapgraph, 6, 7, 1);
-addEdgePrimsHeap(PrimsHeapgraph, 6, 8, 6);
-addEdgePrimsHeap(PrimsHeapgraph, 7, 8, 7);
+//int V = 9;
+//struct PrimsHeapGraph* PrimsHeapgraph = createPrimsHeapGraph(V);
+//addEdgePrimsHeap(PrimsHeapgraph, 0, 1, 4);
+//addEdgePrimsHeap(PrimsHeapgraph, 0, 7, 8);
+//addEdgePrimsHeap(PrimsHeapgraph, 1, 2, 8);
+//addEdgePrimsHeap(PrimsHeapgraph, 1, 7, 11);
+//addEdgePrimsHeap(PrimsHeapgraph, 2, 3, 7);
+//addEdgePrimsHeap(PrimsHeapgraph, 2, 8, 2);
+//addEdgePrimsHeap(PrimsHeapgraph, 2, 5, 4);
+//addEdgePrimsHeap(PrimsHeapgraph, 3, 4, 9);
+//addEdgePrimsHeap(PrimsHeapgraph, 3, 5, 14);
+//addEdgePrimsHeap(PrimsHeapgraph, 4, 5, 10);
+//addEdgePrimsHeap(PrimsHeapgraph, 5, 6, 2);
+//addEdgePrimsHeap(PrimsHeapgraph, 6, 7, 1);
+//addEdgePrimsHeap(PrimsHeapgraph, 6, 8, 6);
+//addEdgePrimsHeap(PrimsHeapgraph, 7, 8, 7);
+//
+//PrimMST(PrimsHeapgraph);
 
-PrimMST(PrimsHeapgraph);
+//UnionFind
+	int V = 3, E = 3;
+	UnionFindGraph* UnionFindgraph = createUnionFindGraph(V, E);
+
+	// add edge 0-1
+	UnionFindgraph->UnionFindEdge[0].src = 0;
+	UnionFindgraph->UnionFindEdge[0].dest = 1;
+
+	// add edge 1-2
+	UnionFindgraph->UnionFindEdge[1].src = 1;
+	UnionFindgraph->UnionFindEdge[1].dest = 2;
+
+	// add edge 0-2
+	UnionFindgraph->UnionFindEdge[2].src = 0;
+	UnionFindgraph->UnionFindEdge[2].dest = 2;
+
+	if (UnionFindisCycle(UnionFindgraph))
+	printf("graph contains cycle");
+	else
+	printf("graph doesn't contain cycle");
+
 	getchar();
 	return 0;
 }

@@ -83,3 +83,19 @@ struct PrimsHeapAdjListNode* newAdjListNode(int dest, int weight)
 	newNode->next = NULL;
 	return newNode;
 }
+
+//Union-Find
+struct UnionFindEdge
+{
+	int src, dest;
+};
+
+// a structure to represent a UnionFindGraph
+struct UnionFindGraph
+{
+	// V-> Number of vertices, E-> Number of UnionFindEdges
+	int V, E;
+
+	// UnionFindGraph is represented as an array of UnionFindEdges
+	struct UnionFindEdge* UnionFindEdge;
+};
