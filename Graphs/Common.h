@@ -74,15 +74,15 @@ struct PrimsHeapGraph
 };
 
 // A utility function to create a new adjacency list node
-struct PrimsHeapAdjListNode* newAdjListNode(int dest, int weight)
-{
-	struct PrimsHeapAdjListNode* newNode =
-		(struct PrimsHeapAdjListNode*) malloc(sizeof(struct PrimsHeapAdjListNode));
-	newNode->dest = dest;
-	newNode->weight = weight;
-	newNode->next = NULL;
-	return newNode;
-}
+//struct PrimsHeapAdjListNode* newAdjListNode1(int dest, int weight)
+//{
+//	struct PrimsHeapAdjListNode* newNode =
+//		(struct PrimsHeapAdjListNode*) malloc(sizeof(struct PrimsHeapAdjListNode));
+//	newNode->dest = dest;
+//	newNode->weight = weight;
+//	newNode->next = NULL;
+//	return newNode;
+//}
 
 //Union-Find
 struct UnionFindEdge
@@ -98,4 +98,27 @@ struct UnionFindGraph
 
 	// UnionFindGraph is represented as an array of UnionFindEdges
 	struct UnionFindEdge* UnionFindEdge;
+};
+
+
+//Union-Find-Rank-Compression
+struct  UnionFindFRCEdge 
+{
+	int src, dest;
+};
+
+// a structure to represent a  UnionFindFRCGraph
+struct  UnionFindFRCGraph
+{
+	// V-> Number of vertices, E-> Number of  UnionFindFRCEdges
+	int V, E;
+
+	//  UnionFindFRCGraph is represented as an array of  UnionFindFRCEdges
+	struct  UnionFindFRCEdge*  UnionFindFRCEdge;
+};
+
+struct  UnionFindFRCsubset
+{
+	int parent;
+	int rank;
 };

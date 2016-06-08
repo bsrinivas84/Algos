@@ -169,6 +169,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TopologicalSort.cpp" />
+    <ClCompile Include="Union-Find-Rank-Compression.cpp" />
     <ClCompile Include="UnionFind-Cycle.cpp" />
   </ItemGroup>
   <ItemGroup>

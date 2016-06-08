@@ -38,6 +38,11 @@ void PrimMST(struct PrimsHeapGraph* PrimsHeapGraph);
 struct UnionFindGraph* createUnionFindGraph(int V, int E);
 int UnionFindisCycle(struct UnionFindGraph* UnionFindGraph);
 
+//Union Find Rank Compression
+void UnionFindFRC(struct subset subsets[], int x, int y);
+struct  UnionFindFRCGraph* createUnionFindFRCGraph(int V, int E);
+int UnionFindFRCisCycle(struct  UnionFindFRCGraph*  UnionFindFRCGraph);
+
 int main()
 {
 	//Dkstra
@@ -277,25 +282,55 @@ int main()
 //PrimMST(PrimsHeapgraph);
 
 //UnionFind
+	//int V = 3, E = 3;
+	//UnionFindGraph* UnionFindgraph = createUnionFindGraph(V, E);
+
+	//// add edge 0-1
+	//UnionFindgraph->UnionFindEdge[0].src = 0;
+	//UnionFindgraph->UnionFindEdge[0].dest = 1;
+
+	//// add edge 1-2
+	//UnionFindgraph->UnionFindEdge[1].src = 1;
+	//UnionFindgraph->UnionFindEdge[1].dest = 2;
+
+	//// add edge 0-2
+	//UnionFindgraph->UnionFindEdge[2].src = 0;
+	//UnionFindgraph->UnionFindEdge[2].dest = 2;
+
+	//if (UnionFindisCycle(UnionFindgraph))
+	//printf("graph contains cycle");
+	//else
+	//printf("graph doesn't contain cycle");
+
+
+
+	//Union Find Rank Compression
+
+	/* Let us create following graph
+	0
+	|  \
+	|    \
+	1-----2 */
+
 	int V = 3, E = 3;
-	UnionFindGraph* UnionFindgraph = createUnionFindGraph(V, E);
+	struct UnionFindFRCGraph*  UnionFindFRCgraph = createUnionFindFRCGraph(V, E);
 
 	// add edge 0-1
-	UnionFindgraph->UnionFindEdge[0].src = 0;
-	UnionFindgraph->UnionFindEdge[0].dest = 1;
+	UnionFindFRCgraph->UnionFindFRCEdge[0].src = 0;
+	UnionFindFRCgraph->UnionFindFRCEdge[0].dest = 1;
 
 	// add edge 1-2
-	UnionFindgraph->UnionFindEdge[1].src = 1;
-	UnionFindgraph->UnionFindEdge[1].dest = 2;
+	UnionFindFRCgraph->UnionFindFRCEdge[1].src = 1;
+	UnionFindFRCgraph->UnionFindFRCEdge[1].dest = 2;
 
 	// add edge 0-2
-	UnionFindgraph->UnionFindEdge[2].src = 0;
-	UnionFindgraph->UnionFindEdge[2].dest = 2;
+	UnionFindFRCgraph->UnionFindFRCEdge[2].src = 0;
+	UnionFindFRCgraph->UnionFindFRCEdge[2].dest = 2;
 
-	if (UnionFindisCycle(UnionFindgraph))
-	printf("graph contains cycle");
+	if (UnionFindFRCisCycle(UnionFindFRCgraph))
+		printf("Graph contains cycle");
 	else
-	printf("graph doesn't contain cycle");
+		printf("Graph doesn't contain cycle");
 
 	getchar();
 	return 0;

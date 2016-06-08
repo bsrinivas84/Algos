@@ -74,6 +74,9 @@
     <ClCompile Include="UnionFind-Cycle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Union-Find-Rank-Compression.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="git.ignore" />
