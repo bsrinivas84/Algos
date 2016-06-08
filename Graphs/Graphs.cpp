@@ -1,4 +1,4 @@
-/// Graphs.cpp : Defines the entry point for the console application.
+//// Graphs.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"

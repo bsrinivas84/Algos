@@ -96,3 +96,5 @@ _vti_pvt/
 /Private/
 
 *.VC.opendb
+*.VC.VC.opendb
+*.db
