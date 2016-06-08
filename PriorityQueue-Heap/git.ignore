@@ -95,7 +95,7 @@ _vti_pvt/
 #Ignore private folder
 /Private/
 
-
+#Line endings
 *.VC.opendb
 *.VC.VC.opendb
 *.db
