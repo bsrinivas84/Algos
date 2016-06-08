@@ -1,4 +1,4 @@
-// A union-find algorithm to detect cycle in a UnionFindGraph
+/// A union-find algorithm to detect cycle in a UnionFindGraph
 #include "stdafx.h"
 #include <stdio.h>
 #include <stdlib.h>

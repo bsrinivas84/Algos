@@ -95,4 +95,4 @@ _vti_pvt/
 #Ignore private folder
 /Private/
 
-*.opendb
+*.VC.opendb
