@@ -5,16 +5,20 @@
 #include<iostream>
 #include<cstring>
 #include<cstdlib>
+#include "Common.h"
 using namespace std;
 
 int lcslengthNonDP(char *X, char *Y, int m, int n);
 int lcslengthDP(char *X, char *Y, int m, int n);
 void LCSDP(char* X, int m, char *Y, int n);
 
+
 //Knapsack Problem
 int max(int a, int b) { return (a > b) ? a : b; }
 
 int lis(int arr[], int n);
+
+int getMaxArea(int hist[], int n);
 
 // Returns the maximum value that can be put in a knapsack of capacity W
 int knapSack(int W, int wt[], int val[], int n)
@@ -309,9 +313,26 @@ int main()
 
 
 //LIS
-	int arr[] = { 10, 22, 9, 33, 21, 50, 41, 60 };
-	int n = sizeof(arr) / sizeof(arr[0]);
-	printf("Length of LIS is %d\n", lis(arr, n));
+	//int arr[] = { 10, 22, 9, 33, 21, 50, 41, 60 };
+	//int n = sizeof(arr) / sizeof(arr[0]);
+	//printf("Length of LIS is %d\n", lis(arr, n));
+
+
+//Maximum Square Sub Matrix
+
+	//bool M[6][5] = { { 0, 1, 1, 0, 1 },
+	//{ 1, 1, 0, 1, 0 },
+	//{ 0, 1, 1, 1, 0 },
+	//{ 1, 1, 1, 1, 0 },
+	//{ 1, 1, 1, 1, 1 },
+	//{ 0, 0, 0, 0, 0 } };
+
+	//printMaxSubSquare(M);
+
+//Histogram
+	int hist[] = { 6, 1, 5, 1, 5, 1, 6 };
+	int n = sizeof(hist) / sizeof(hist[0]);
+	cout << "Maximum area is " << getMaxArea(hist, n);
 
 	getchar();
 	return 0;
