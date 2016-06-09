@@ -53,6 +53,15 @@
     <ClCompile Include="HistogramArea.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LongestPalindromeSubsequence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LongestPalindromeSubstring.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Manachers-LPS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="git.ignore" />

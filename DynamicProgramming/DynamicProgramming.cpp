@@ -20,6 +20,16 @@ int lis(int arr[], int n);
 
 int getMaxArea(int hist[], int n);
 
+//Longest Palindrome Subsequence
+int lps(char *str);
+
+//Longest Palindrome Substring
+int longestPalSubstr(char *str);
+int longestPalSubstrspace(char *str);
+
+// Manchers LPSubstring
+void manachersFindLongestPalindromicString(char text[100]);
+
 // Returns the maximum value that can be put in a knapsack of capacity W
 int knapSack(int W, int wt[], int val[], int n)
 {
@@ -330,9 +340,49 @@ int main()
 	//printMaxSubSquare(M);
 
 //Histogram
-	int hist[] = { 6, 1, 5, 1, 5, 1, 6 };
-	int n = sizeof(hist) / sizeof(hist[0]);
-	cout << "Maximum area is " << getMaxArea(hist, n);
+	//int hist[] = { 6, 1, 5, 1, 5, 1, 6 };
+	//int n = sizeof(hist) / sizeof(hist[0]);
+	//cout << "Maximum area is " << getMaxArea(hist, n);
+
+//palindrome Subsequence
+	//char seq[] = "GEEKS FOR GEEKS";
+	//int n = strlen(seq);
+	//printf("The lnegth of the LPS is %d", lps(seq));
+
+//Palindrome Substring
+	//char str[] = "forgeeksskeegfor";
+	//printf("\nLength is: %d\n", longestPalSubstr(str));
+
+	//char str1[] = "forgeeksskeegfor";
+	//printf("\nLength is: %d\n", longestPalSubstrspace(str1));
+
+	char text[100];
+	strcpy_s(text, "babcbabcbaccba");
+	manachersFindLongestPalindromicString(text);
+
+	/*strcpy(text, "abaaba");
+	manachersFindLongestPalindromicString(text);
+
+	strcpy(text, "abababa");
+	manachersFindLongestPalindromicString(text);
+
+	strcpy(text, "abcbabcbabcba");
+	manachersFindLongestPalindromicString(text);
+
+	strcpy(text, "forgeeksskeegfor");
+	manachersFindLongestPalindromicString(text);
+
+	strcpy(text, "caba");
+	manachersFindLongestPalindromicString(text);
+
+	strcpy(text, "abacdfgdcaba");
+	manachersFindLongestPalindromicString(text);
+
+	strcpy(text, "abacdfgdcabba");
+	manachersFindLongestPalindromicString(text);
+
+	strcpy(text, "abacdedcaba");
+	manachersFindLongestPalindromicString(text);*/
 
 	getchar();
 	return 0;

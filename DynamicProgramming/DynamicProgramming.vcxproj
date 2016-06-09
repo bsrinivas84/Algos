@@ -156,6 +156,9 @@
     <ClCompile Include="LCSLength.cpp" />
     <ClCompile Include="LCSLengthDP.cpp" />
     <ClCompile Include="LIS.cpp" />
+    <ClCompile Include="LongestPalindromeSubsequence.cpp" />
+    <ClCompile Include="LongestPalindromeSubstring.cpp" />
+    <ClCompile Include="Manachers-LPS.cpp" />
     <ClCompile Include="MaxSubSquareMatrix.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
