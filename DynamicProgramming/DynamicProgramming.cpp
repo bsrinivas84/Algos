@@ -30,6 +30,12 @@ int longestPalSubstrspace(char *str);
 // Manchers LPSubstring
 void manachersFindLongestPalindromicString(char text[100]);
 
+//Stair Ways
+int StairWays(int n, int m);
+
+//Min Jumps
+int minJumps(int arr[], int n);
+
 // Returns the maximum value that can be put in a knapsack of capacity W
 int knapSack(int W, int wt[], int val[], int n)
 {
@@ -383,6 +389,13 @@ int main()
 
 	strcpy(text, "abacdedcaba");
 	manachersFindLongestPalindromicString(text);*/
+
+//Stair Ways
+	//printf(" %d", StairWays(11, 4));
+
+	int arr[] = { 1, 3, 6, 1, 0, 9 };
+	int size = sizeof(arr) / sizeof(int);
+	printf("Minimum number of jumps to reach end is %d ", minJumps(arr, size));
 
 	getchar();
 	return 0;

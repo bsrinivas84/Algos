@@ -160,6 +160,8 @@
     <ClCompile Include="LongestPalindromeSubstring.cpp" />
     <ClCompile Include="Manachers-LPS.cpp" />
     <ClCompile Include="MaxSubSquareMatrix.cpp" />
+    <ClCompile Include="StairCase.cpp" />
+    <ClCompile Include="StairsMinJumps.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
