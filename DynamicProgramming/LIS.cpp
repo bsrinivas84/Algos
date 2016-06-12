@@ -21,9 +21,11 @@ int lis(int arr[], int n)
 
 	/* Pick maximum of all LIS values */
 	for (i = 0; i < n; i++)
+	{
+		printf("%d ", lis[i]);
 		if (max < lis[i])
 			max = lis[i];
-
+	}
 	/* Free memory to avoid memory leak */
 	free(lis);
 

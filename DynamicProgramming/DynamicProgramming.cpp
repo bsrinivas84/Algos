@@ -36,34 +36,59 @@ int StairWays(int n, int m);
 //Min Jumps
 int minJumps(int arr[], int n);
 
+//// Returns the maximum value that can be put in a knapsack of capacity W
+//int knapSack(int W, int wt[], int val[], int n)
+//{
+//	// Base Case
+//	if (n == 0 || W == 0)
+//		return 0;
+//
+//	// If weight of the nth item is more than Knapsack capacity W, then
+//	// this item cannot be included in the optimal solution
+//	if (wt[n - 1] > W)
+//		return knapSack(W, wt, val, n - 1);
+//
+//	// Return the maximum of two cases: 
+//	// (1) nth item included 
+//	// (2) not included
+//	else return max(val[n - 1] + knapSack(W - wt[n - 1], wt, val, n - 1),
+//								 knapSack(W, wt, val, n - 1));
+//}
+
+//DP
 // Returns the maximum value that can be put in a knapsack of capacity W
 int knapSack(int W, int wt[], int val[], int n)
 {
-	// Base Case
-	if (n == 0 || W == 0)
-		return 0;
+	int i, w;
+	int K[4][51];
 
-	// If weight of the nth item is more than Knapsack capacity W, then
-	// this item cannot be included in the optimal solution
-	if (wt[n - 1] > W)
-		return knapSack(W, wt, val, n - 1);
+	// Build table K[][] in bottom up manner
+	for (i = 0; i <= n; i++)
+	{
+		for (w = 0; w <= W; w++)
+		{
+			if (i == 0 || w == 0)
+				K[i][w] = 0;
+			else if (wt[i - 1] <= w)
+				K[i][w] = max(val[i - 1] + K[i - 1][w - wt[i - 1]], K[i - 1][w]);
+			else
+				K[i][w] = K[i - 1][w];
+		}
+	}
 
-	// Return the maximum of two cases: 
-	// (1) nth item included 
-	// (2) not included
-	else return max(val[n - 1] + knapSack(W - wt[n - 1], wt, val, n - 1),
-		knapSack(W, wt, val, n - 1)
-		);
+	return K[n][W];
 }
+
 
 void KnapsackProblem() {
 	int val[] = { 60, 10, 120 };
-	int wt[] = { 10, 20, 30 };
+	int wt[] = { 10, 20, 1000 };
 	int  W = 50;
 	int n = sizeof(val) / sizeof(val[0]);
 	printf("%d", knapSack(W, wt, val, n));
 
 }
+
 
 
 /* Function to get minimum number of trails needed in worst
@@ -73,7 +98,7 @@ int eggDrop(int n, int k)
 #define INT_MAX 2147483647;
 	/* A 2D table where entery eggFloor[i][j] will represent minimum
 	number of trials needed for i eggs and j floors. */
-	int eggFloor[3][37];
+	int eggFloor[5][37];
 	int res;
 	int i, j, x;
 
@@ -90,12 +115,12 @@ int eggDrop(int n, int k)
 
 	// Fill rest of the entries in table using optimal substructure
 	// property
-	for (i = 2; i <= n; i++)
+	for (i = 2; i <= n; i++) // For eggs
 	{
-		for (j = 2; j <= k; j++)
+		for (j = 2; j <= k; j++) // For Floors
 		{
 			eggFloor[i][j] = INT_MAX;
-			for (x = 1; x <= j; x++)
+			for (x = 1; x <= j; x++)  // Till Floors
 			{
 				res = 1 + max(eggFloor[i - 1][x - 1], eggFloor[i][j - x]);
 				if (res < eggFloor[i][j])
@@ -110,7 +135,7 @@ int eggDrop(int n, int k)
 
 void EggFall()
 {
-	int n = 2, k = 36;
+	int n = 4, k = 36;
 	printf("\nMinimum number of trials in worst case with %d eggs and "
 		"%d floors is %d \n", n, k, eggDrop(n, k));
 	//return 0;
@@ -295,24 +320,24 @@ int mcs(int A[6], int n)
 }
 int main()
 {
-	////KnapsackProblem();
-	////EggFall();
+	KnapsackProblem();
+	//EggFall();
 	///*int i = 0;
 	//printf("%d", Fibonacci(6));*/
 	//int arr[] = { 10, 22, 9, 33, 21, 50, 41, 60, 80 };
 	//int subarr[9];
 	//// LIS(&arr, &subarr,0);
 
-	//LongestCommonSubsequence();
+	//LongestCommonSubsequence(); -- Not required
 
 	//char X[] = "ABCBDAB", Y[] = "BDCABA";
 	//printf("%d", LCSLength(X, 0, sizeof(X) - 1, Y, 0, sizeof(Y) - 1));
 
-	/*char X[] = "AGGTAB";
-	char Y[] = "GXTXAY";
-	int m = strlen(X);
-	int n = strlen(Y);
-	lcs(X, Y, m, n);*/
+	//char X[] = "AGGTAB";
+	//char Y[] = "GXTXAY";
+	//int m = strlen(X);
+	//int n = strlen(Y);
+	//lcs(X, Y, m, n); -- Superfluous as LCSDP() does the same thing
 
 	//int numbers[] = {1,-3,4,-2,-1,6};//{ -2,11,-4,13,-5,2 };
 	//printf("%d", mcs(numbers,sizeof(numbers)/sizeof(int)));
@@ -323,9 +348,9 @@ int main()
 	//int m = strlen(X);
 	//int n = strlen(Y);
 
-	////printf("Length of LCS is %d\n", lcslengthNonDP(X, Y, m, n));
-	////printf("Length of LCS is %d\n", lcslengthDP(X, Y, m, n));
-	//LCSDP(X,m,Y, n);
+	////printf("Length of LCS is %d\n", lcslengthNonDP(X, Y, m, n)); -- required
+	////printf("Length of LCS is %d\n", lcslengthDP(X, Y, m, n)); --Not required
+	//LCSDP(X,m,Y, n); // Displays Length and String
 
 
 //LIS
@@ -346,9 +371,9 @@ int main()
 	//printMaxSubSquare(M);
 
 //Histogram
-	//int hist[] = { 6, 1, 5, 1, 5, 1, 6 };
-	//int n = sizeof(hist) / sizeof(hist[0]);
-	//cout << "Maximum area is " << getMaxArea(hist, n);
+/*	int hist[] = { 6, 1, 5, 1, 5, 1, 6 };
+	int n = sizeof(hist) / sizeof(hist[0]);
+	cout << "Maximum area is " << getMaxArea(hist, n)*/;
 
 //palindrome Subsequence
 	//char seq[] = "GEEKS FOR GEEKS";
@@ -362,40 +387,18 @@ int main()
 	//char str1[] = "forgeeksskeegfor";
 	//printf("\nLength is: %d\n", longestPalSubstrspace(str1));
 
-	char text[100];
-	strcpy_s(text, "babcbabcbaccba");
-	manachersFindLongestPalindromicString(text);
-
-	/*strcpy(text, "abaaba");
-	manachersFindLongestPalindromicString(text);
-
-	strcpy(text, "abababa");
-	manachersFindLongestPalindromicString(text);
-
-	strcpy(text, "abcbabcbabcba");
-	manachersFindLongestPalindromicString(text);
-
-	strcpy(text, "forgeeksskeegfor");
-	manachersFindLongestPalindromicString(text);
-
-	strcpy(text, "caba");
-	manachersFindLongestPalindromicString(text);
-
-	strcpy(text, "abacdfgdcaba");
-	manachersFindLongestPalindromicString(text);
-
-	strcpy(text, "abacdfgdcabba");
-	manachersFindLongestPalindromicString(text);
-
-	strcpy(text, "abacdedcaba");
-	manachersFindLongestPalindromicString(text);*/
+	//char text[100];
+	//strcpy_s(text, "babcbabcbaccba");
+	//manachersFindLongestPalindromicString(text);
+		
 
 //Stair Ways
 	//printf(" %d", StairWays(11, 4));
 
-	int arr[] = { 1, 3, 6, 1, 0, 9 };
-	int size = sizeof(arr) / sizeof(int);
-	printf("Minimum number of jumps to reach end is %d ", minJumps(arr, size));
+	//Stair case minimum Jumps
+	//int arr[] = { 1, 3, 6, 1, 0, 9 };
+	//int size = sizeof(arr) / sizeof(int);
+	//printf("Minimum number of jumps to reach end is %d ", minJumps(arr, size));
 
 	getchar();
 	return 0;
