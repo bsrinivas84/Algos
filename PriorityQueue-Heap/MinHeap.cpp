@@ -1,60 +1,111 @@
-#include"stdafx.h"
-#include<limits.h>
-/*Declaring heap globally so that we do not need to pass it as an argument every time*/
-/* Heap used here is Min Heap */
-int heap[1000000], heapSize;
-/*Initialize Heap*/
-void Init()
+// A C++ program to demonstrate common Binary Heap Operations
+#include "stdafx.h"
+#include<iostream>
+#include<climits>
+#include "Common.h"
+
+using namespace std;
+
+// Prototype of a utility function to swap two integers
+void swapHeap(int *x, int *y);
+
+// A class for Min Heap
+
+// A utility function to swap two elements
+void swapHeap(int *x, int *y)
 {
-	heapSize = 0;
-	heap[0] = -INT_MAX;
+	int temp = *x;
+	*x = *y;
+	*y = temp;
 }
-/*Insert an element into the heap */
-void Insert(int element)
+
+// Constructor: Builds a heap from a given array a[] of given size
+MinHeap::MinHeap(int cap)
 {
-	heapSize++;
-	heap[heapSize] = element; /*Insert in the last place*/
-							  /*Adjust its position*/
-	int now = heapSize;
-	while (heap[now / 2] > element)
-	{
-		heap[now] = heap[now / 2];
-		now /= 2;
-	}
-	heap[now] = element;
+	heap_size = 0;
+	capacity = cap;
+	harr = new int[cap];
 }
-int DeleteMin()
+
+// Inserts a new key 'k'
+void MinHeap::insertKey(int k)
 {
-	/* heap[1] is the minimum element. So we remove heap[1]. Size of the heap is decreased.
-	Now heap[1] has to be filled. We put the last element in its place and see if it fits.
-	If it does not fit, take minimum element among both its children and replaces parent with it.
-	Again See if the last element fits in that place.*/
-	int minElement, lastElement, child, now;
-	minElement = heap[1];
-	lastElement = heap[heapSize--];
-	/* now refers to the index at which we are now */
-	for (now = 1; now * 2 <= heapSize; now = child)
+	if (heap_size == capacity)
 	{
-		/* child is the index of the element which is minimum among both the children */
-		/* Indexes of children are i*2 and i*2 + 1*/
-		child = now * 2;
-		/*child!=heapSize beacuse heap[heapSize+1] does not exist, which means it has only one
-		child */
-		if (child != heapSize && heap[child + 1] < heap[child])
-		{
-			child++;
-		}
-		/* To check if the last element fits ot not it suffices to check if the last element
-		is less than the minimum element among both the children*/
-		if (lastElement > heap[child])
-		{
-			heap[now] = heap[child];
-		}
-		else /* It fits there */
-		{
-			break;
-		}
+		cout << "\nOverflow: Could not insertKey\n";
+		return;
 	}
-	heap[now] = lastElement;
-	return minElement;
+
+	// First insert the new key at the end
+	heap_size++;
+	int i = heap_size - 1;
+	harr[i] = k;
+
+	// Fix the min heap property if it is violated
+	while (i != 0 && harr[parent(i)] > harr[i])
+	{
+		swapHeap(&harr[i], &harr[parent(i)]);
+		i = parent(i);
+	}
+}
+
+// Decreases value of key at index 'i' to new_val.  It is assumed that
+// new_val is smaller than harr[i].
+void MinHeap::decreaseKey(int i, int new_val)
+{
+	harr[i] = new_val;
+	while (i != 0 && harr[parent(i)] > harr[i])
+	{
+		swapHeap(&harr[i], &harr[parent(i)]);
+		i = parent(i);
+	}
+}
+
+
+
+
+// This function deletes key at index i. It first reduced value to minus
+// infinite, then calls extractMin()
+void MinHeap::deleteKey(int i)
+{
+	decreaseKey(i, INT_MIN);
+	extractMin();
+}
+
+// A recursive method to heapify a subtree with root at given index
+// This method assumes that the subtrees are already heapified
+void MinHeap::MinHeapify(int i)
+{
+	int l = left(i);
+	int r = right(i);
+	int smallest = i;
+	if (l < heap_size && harr[l] < harr[i])
+		smallest = l;
+	if (r < heap_size && harr[r] < harr[smallest])
+		smallest = r;
+	if (smallest != i)
+	{
+		swapHeap(&harr[i], &harr[smallest]);
+		MinHeapify(smallest);
+	}
+}
+
+// Method to remove minimum element (or root) from min heap
+int MinHeap::extractMin()
+{
+	if (heap_size <= 0)
+		return INT_MAX;
+	if (heap_size == 1)
+	{
+		heap_size--;
+		return harr[0];
+	}
+
+	// Store the minimum vakue, and remove it from heap
+	int root = harr[0];
+	harr[0] = harr[heap_size - 1];
+	heap_size--;
+	MinHeapify(0);
+
+	return root;
 }

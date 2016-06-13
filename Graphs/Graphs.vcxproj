@@ -158,6 +158,7 @@
     <ClCompile Include="DFS.cpp" />
     <ClCompile Include="Djkstra-PrioriyQueue.cpp" />
     <ClCompile Include="Djkstra.cpp" />
+    <ClCompile Include="FloydWarshall.cpp" />
     <ClCompile Include="Graphs.cpp" />
     <ClCompile Include="Kruskals.cpp" />
     <ClCompile Include="Prims-Heap.cpp" />

@@ -2,29 +2,24 @@
 //
 
 #include "stdafx.h"
-
-void Init();
-void Insert(int element);
-int DeleteMin();
+#include "Common.h"
+#include<iostream>"
+using namespace std;
 
 int main()
 {
-	int number_of_elements;
-	printf("Enter # of elements");
-	scanf_s("%d", &number_of_elements);
-	int iter, element;
-	Init();
-	for (iter = 0; iter < number_of_elements; iter++)
-	{
-		printf("Enter element {0} \n", iter);
-		scanf_s("%d", &element);
-		Insert(element);
-	}
-	for (iter = 0; iter < number_of_elements; iter++)
-	{
-		printf("%d ", DeleteMin());
-	}
-	printf("\n");
+	MinHeap h(11);
+	h.insertKey(3);
+	h.insertKey(2);
+	h.deleteKey(1);
+	h.insertKey(15);
+	h.insertKey(5);
+	h.insertKey(4);
+	h.insertKey(45);
+	cout << h.extractMin() << " ";
+	cout << h.getMin() << " ";
+	h.decreaseKey(2, 1);
+	cout << h.getMin();
 	getchar();
 	return 0;
 }

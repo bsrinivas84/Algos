@@ -60,7 +60,7 @@ int minJumps(int arr[], int n);
 int knapSack(int W, int wt[], int val[], int n)
 {
 	int i, w;
-	int K[4][51];
+	int K[3][51];
 
 	// Build table K[][] in bottom up manner
 	for (i = 0; i <= n; i++)
@@ -98,7 +98,7 @@ int eggDrop(int n, int k)
 #define INT_MAX 2147483647;
 	/* A 2D table where entery eggFloor[i][j] will represent minimum
 	number of trials needed for i eggs and j floors. */
-	int eggFloor[5][37];
+	int eggFloor[3][37];
 	int res;
 	int i, j, x;
 
@@ -135,7 +135,7 @@ int eggDrop(int n, int k)
 
 void EggFall()
 {
-	int n = 4, k = 36;
+	int n = 2, k = 36;
 	printf("\nMinimum number of trials in worst case with %d eggs and "
 		"%d floors is %d \n", n, k, eggDrop(n, k));
 	//return 0;
@@ -320,8 +320,8 @@ int mcs(int A[6], int n)
 }
 int main()
 {
-	KnapsackProblem();
-	//EggFall();
+	//KnapsackProblem();
+	EggFall();
 	///*int i = 0;
 	//printf("%d", Fibonacci(6));*/
 	//int arr[] = { 10, 22, 9, 33, 21, 50, 41, 60, 80 };

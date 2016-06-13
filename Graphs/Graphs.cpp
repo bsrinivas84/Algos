@@ -43,6 +43,8 @@ void UnionFindFRC(struct subset subsets[], int x, int y);
 struct  UnionFindFRCGraph* createUnionFindFRCGraph(int V, int E);
 int UnionFindFRCisCycle(struct  UnionFindFRCGraph*  UnionFindFRCGraph);
 
+void floydWarshall(int graph[][4]);
+
 int main()
 {
 	//Dkstra
@@ -64,25 +66,25 @@ int main()
 	//Dkstra Priority Queue
 
 	//// create the graph given in above fugure
-	//int V = 9;
-	//struct Graph* graph = createGraph(V);
-	//addEdge(graph, 0, 1, 4);
-	//addEdge(graph, 0, 7, 8);
-	//addEdge(graph, 1, 2, 8);
-	//addEdge(graph, 1, 7, 11);
-	//addEdge(graph, 2, 3, 7);
-	//addEdge(graph, 2, 8, 2);
-	//addEdge(graph, 2, 5, 4);
-	//addEdge(graph, 3, 4, 9);
-	//addEdge(graph, 3, 5, 14);
-	//addEdge(graph, 4, 5, 10);
-	//addEdge(graph, 5, 6, 2);
-	//addEdge(graph, 6, 7, 1);
-	//addEdge(graph, 6, 8, 6);
-	//addEdge(graph, 7, 8, 7);
+	/*int V = 9;
+	struct Graph* graph = createGraph(V);
+	addEdge(graph, 0, 1, 4);
+	addEdge(graph, 0, 7, 8);
+	addEdge(graph, 1, 2, 8);
+	addEdge(graph, 1, 7, 11);
+	addEdge(graph, 2, 3, 7);
+	addEdge(graph, 2, 8, 2);
+	addEdge(graph, 2, 5, 4);
+	addEdge(graph, 3, 4, 9);
+	addEdge(graph, 3, 5, 14);
+	addEdge(graph, 4, 5, 10);
+	addEdge(graph, 5, 6, 2);
+	addEdge(graph, 6, 7, 1);
+	addEdge(graph, 6, 8, 6);
+	addEdge(graph, 7, 8, 7);
 
-	//dijkstraPQ(graph, 0);
-
+	dijkstraPQ(graph, 0);
+*/
 
 //Adjcency List
 	//int V = 5;
@@ -312,25 +314,46 @@ int main()
 	|    \
 	1-----2 */
 
-	int V = 3, E = 3;
-	struct UnionFindFRCGraph*  UnionFindFRCgraph = createUnionFindFRCGraph(V, E);
+	//int V = 3, E = 3;
+	//struct UnionFindFRCGraph*  UnionFindFRCgraph = createUnionFindFRCGraph(V, E);
 
-	// add edge 0-1
-	UnionFindFRCgraph->UnionFindFRCEdge[0].src = 0;
-	UnionFindFRCgraph->UnionFindFRCEdge[0].dest = 1;
+	//// add edge 0-1
+	//UnionFindFRCgraph->UnionFindFRCEdge[0].src = 0;
+	//UnionFindFRCgraph->UnionFindFRCEdge[0].dest = 1;
 
-	// add edge 1-2
-	UnionFindFRCgraph->UnionFindFRCEdge[1].src = 1;
-	UnionFindFRCgraph->UnionFindFRCEdge[1].dest = 2;
+	//// add edge 1-2
+	//UnionFindFRCgraph->UnionFindFRCEdge[1].src = 1;
+	//UnionFindFRCgraph->UnionFindFRCEdge[1].dest = 2;
 
-	// add edge 0-2
-	UnionFindFRCgraph->UnionFindFRCEdge[2].src = 0;
-	UnionFindFRCgraph->UnionFindFRCEdge[2].dest = 2;
+	//// add edge 0-2
+	//UnionFindFRCgraph->UnionFindFRCEdge[2].src = 0;
+	//UnionFindFRCgraph->UnionFindFRCEdge[2].dest = 2;
 
-	if (UnionFindFRCisCycle(UnionFindFRCgraph))
-		printf("Graph contains cycle");
-	else
-		printf("Graph doesn't contain cycle");
+	//if (UnionFindFRCisCycle(UnionFindFRCgraph))
+	//	printf("Graph contains cycle");
+	//else
+	//	printf("Graph doesn't contain cycle");
+
+
+//Floyd Warshall Algo
+	/* Let us create the following weighted graph
+	10
+	(0)------->(3)
+	|         /|\
+	5 |          |
+	|          | 1
+	\|/         |
+	(1)------->(2)
+	3           */
+#define INF 99999
+	int graph[4][4] = { { 0,   5,  INF, 10 },
+						{ INF, 0,   3, INF },
+						{ INF, INF, 0,   1 },
+						{ INF, INF, INF, 0 }
+	};
+
+	// Print the solution
+	floydWarshall(graph);
 
 	getchar();
 	return 0;
