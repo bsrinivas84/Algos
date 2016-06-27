@@ -159,7 +159,9 @@
     <ClCompile Include="LongestPalindromeSubsequence.cpp" />
     <ClCompile Include="LongestPalindromeSubstring.cpp" />
     <ClCompile Include="Manachers-LPS.cpp" />
+    <ClCompile Include="MaxLenghPairs.cpp" />
     <ClCompile Include="MaxSubSquareMatrix.cpp" />
+    <ClCompile Include="StackBoxes.cpp" />
     <ClCompile Include="StairCase.cpp" />
     <ClCompile Include="StairsMinJumps.cpp" />
     <ClCompile Include="stdafx.cpp">

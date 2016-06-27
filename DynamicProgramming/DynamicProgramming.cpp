@@ -36,6 +36,7 @@ int StairWays(int n, int m);
 //Min Jumps
 int minJumps(int arr[], int n);
 
+int maxChainLength(struct pair1 arr[], int n);
 //// Returns the maximum value that can be put in a knapsack of capacity W
 //int knapSack(int W, int wt[], int val[], int n)
 //{
@@ -321,7 +322,7 @@ int mcs(int A[6], int n)
 int main()
 {
 	//KnapsackProblem();
-	EggFall();
+	//EggFall();
 	///*int i = 0;
 	//printf("%d", Fibonacci(6));*/
 	//int arr[] = { 10, 22, 9, 33, 21, 50, 41, 60, 80 };
@@ -399,6 +400,19 @@ int main()
 	//int arr[] = { 1, 3, 6, 1, 0, 9 };
 	//int size = sizeof(arr) / sizeof(int);
 	//printf("Minimum number of jumps to reach end is %d ", minJumps(arr, size));
+
+//Max Chain Subsets
+	//struct pair1 arr[] = { { 50, 60 },{ 27, 40 } ,{ 5, 24 },{ 15, 25 }
+	// };
+	//int n = sizeof(arr) / sizeof(arr[0]);
+	//printf("Length of maximum size chain is %d\n",
+	//	maxChainLength(arr, n));
+
+	Box arr[] = { { 4, 6, 7 },{ 1, 2, 3 },{ 4, 5, 6 },{ 10, 12, 32 } };
+	int n = sizeof(arr) / sizeof(arr[0]);
+
+	printf("The maximum possible height of stack is %d\n",
+		maxStackHeight(arr, n));
 
 	getchar();
 	return 0;
